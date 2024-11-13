@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RecyclerView</string>
+    <string name="title">Мой гардероб</string>
+    <string name="to_the_wardrobe">К гардеробу</string>
+    <string name="name">Название</string>
+    <string name="description">Описание</string>
+</resources>
