@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutCL"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThirdActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarTA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Мой гардероб"
+        app:titleTextColor="@color/black"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarTA">
+
+        <TextView
+            android:id="@+id/displayNameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:textSize="30dp"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            tools:ignore="SpUsage" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="8dp"
+            tools:ignore="UseCompoundDrawables,UselessLeaf">
+
+            <ImageView
+                android:id="@+id/displayImageViewIV"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_margin="8dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/displayDescriptionTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/description"
+                android:layout_margin="8dp"
+                android:textSize="26sp"
+                android:textColor="@color/black"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
