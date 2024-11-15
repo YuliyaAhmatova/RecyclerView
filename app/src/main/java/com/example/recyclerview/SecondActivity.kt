@@ -16,18 +16,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SecondActivity : AppCompatActivity() {
 
-    companion object {
-        const val REQUEST_CODE = 100
-    }
-
-    var updateThing: Thing? = null
+    private var updateThing: Thing? = null
     private var adapter: CustomAdapter? = null
     private var things: MutableList<Thing> = ThingDataBase.things
     private val dataBase = DBHelper(this)
 
     private lateinit var toolbarSA: Toolbar
     private lateinit var recyclerViewRV: RecyclerView
-
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,25 +44,20 @@ class SecondActivity : AppCompatActivity() {
 
         recyclerViewRV.layoutManager = LinearLayoutManager(this)
 
+        updateThing = intent?.getSerializableExtra("updatedThing") as Thing
+        if (updateThing != null) {
+            updateRecord()
+        }
+
         recyclerViewRV.setHasFixedSize(true)
         adapter?.setOnThingClickListener(object :
             CustomAdapter.OnThingClickListener {
             override fun onThingClick(thing: Thing, position: Int) {
                 val intent = Intent(this@SecondActivity, ThirdActivity::class.java)
                 intent.putExtra("thing", thing)
-                startActivityForResult(intent, REQUEST_CODE)
+                startActivity(intent)
             }
         })
-    }
-
-    @Deprecated("This method has been deprecated in favor of using the Activity Result API\n      which brings increased type safety via an {@link ActivityResultContract} and the prebuilt\n      contracts for common intents available in\n      {@link androidx.activity.result.contract.ActivityResultContracts}, provides hooks for\n      testing, and allow receiving results in separate, testable classes independent from your\n      activity. Use\n      {@link #registerForActivityResult(ActivityResultContract, ActivityResultCallback)}\n      with the appropriate {@link ActivityResultContract} and handling the result in the\n      {@link ActivityResultCallback#onActivityResult(Object) callback}.")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
-            val updatedThingTwo = data?.getSerializableExtra("updatedThing") as Thing
-            updateThing = updatedThingTwo
-            updateRecord()
-        }
     }
 
     private fun updateRecord() {

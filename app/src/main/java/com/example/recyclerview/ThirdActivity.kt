@@ -3,9 +3,7 @@
 package com.example.recyclerview
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -23,7 +21,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class ThirdActivity : AppCompatActivity() {
 
-    var thing: Thing? = null
+    private var thing: Thing? = null
 
     private lateinit var layoutCL: ConstraintLayout
 
@@ -83,7 +81,6 @@ class ThirdActivity : AppCompatActivity() {
                 )
                 val intent = Intent(this@ThirdActivity, SecondActivity::class.java)
                 intent.putExtra("updatedThing", updateThing)
-                setResult(Activity.RESULT_OK, intent)
             }
             dialog.setNegativeButton("Отмена") { _, _ ->
             }
